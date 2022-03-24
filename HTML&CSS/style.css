@@ -1,0 +1,244 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 51vw;
+    max-width: 980px;
+    margin: 40px auto;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+header h1{
+    color: #063277;
+}
+header a img{
+    width: 277px;
+}
+header h1, img{
+    max-width: 20vw;
+}
+.factory-section{
+    background-color: #FEFCE0;
+    border: 1px solid black;
+}
+.factory-section h1{
+    display: inline-block;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding: 10px 40px 10px 40px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+.factory-section .content-wrapper div{
+    background-color: white;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.content-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.content{
+    flex-basis: 60%;
+}
+.robot-container{
+    flex-basis: 37%;
+    margin-left: 10px;
+    
+}
+.content div:nth-child(1){
+    margin-right: 3%;
+}
+.content div:nth-child(2){
+    margin-right: 6%;
+}
+.content div:nth-child(3){
+    margin-right: 9%;
+}
+.content-wrapper img{
+    width: 16%;
+    float: left;
+    margin-right: 20px;
+}
+.content-wrapper p{
+    padding-left: 20px;
+}
+.create-robot{
+    background-color: #DFEDD6;
+    border: 1px solid black;
+    padding-bottom: 200px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.create-robot .heading{
+    flex-grow: 1;
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin: 0;
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid;
+}
+.create-robot span, button{
+    margin: 15px;
+}
+.create-robot span label{
+    display: block;
+}
+.create-robot span p{
+    margin: 0;
+    margin-bottom: 7px;
+}
+input.name, select.select-type{
+    max-width: 30vw;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+select.select-type{
+    height: 34px;
+}
+input.color-picker{
+    height: 34px;
+    width: 90px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+input.jump, input.talk, input.blink{
+    width: 16px;
+    height: 16px;
+}
+form button{
+    padding: 9px 38px;
+    margin-right: 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+form button:hover{
+    background-color: #E2E0E0;
+    cursor: pointer;
+}
+form label{
+    margin-bottom: 7px;
+}
+textarea#comments{
+    resize: none;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.robot-container{
+    position: relative;
+
+}
+.robot-container p{
+    position: absolute;
+    left: 47%;
+    bottom: 0%;
+    transform: translate(-47%, 0%);
+}
+.head{
+    width: 15%;
+    height: 20%;
+    border-radius: 50%;
+    position: absolute;
+    top:7%;
+    left: 50%;
+    transform: translate(-50%, -7%);
+}
+.left-hand, .right-hand{
+    width: 5%;
+    height: 25%;
+    border-radius: 4px;
+    background-color: #EBEBEB !important;
+    position: absolute;
+}
+.left-hand{
+    top: 30%;
+    left: 33%;
+}
+.right-hand{
+    top: 30%;
+    right: 33%;
+}
+.left-leg, .right-leg{
+    width: 5%;
+    height: 20%;
+    position: absolute;
+}
+.left-leg{
+    top: 63%;
+    left: 42%;
+}
+.right-leg{
+    top: 63%;
+    right: 42%;
+}
+.body{
+    width: 19%;
+    height: 35%;
+    background-color: #E96126 !important;
+    transform: perspective(10px) rotateX(-2deg);
+    position: absolute;
+    top: 30%;
+    left: 40%;
+}
+div.left-eye, div.right-eye{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 20%;
+}
+div.left-eye{
+    left: 16%;
+}
+div.right-eye{
+    right: 16%;
+}
+div.mouth{
+    width: 50%;
+    height: 15%;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    animation-name: talk;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes talk{
+    to{height: 30%;}
+}
+@keyframes fadeIn{
+    0% {opacity: 0%;}
+    100%{opacity: 1;}
+}
+.content p, img{
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+.content div .second{
+    animation-delay: 1s;   
+}
+.content div .third{
+    animation-delay: 2s;
+}
+hr{
+    width: 100%;
+    border: none;
+    background: black;
+    height: 1px;
+}

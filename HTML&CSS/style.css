@@ -29,8 +29,21 @@ header h1, img{
     padding-left: 40px;
     padding: 10px 40px 10px 40px;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    position: relative;
 }
+.factory-section h1::after{
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 6px;
+    width: 33px;
+    height: 34px;
+    border: 1px solid black;
+    border-left: 0;
+    border-top: 0;
+    transform: rotate(135deg);
+}
+
 .factory-section .content-wrapper div{
     background-color: white;
     border: 1px solid black;

@@ -59,18 +59,18 @@
     </section>
     <form action="#" class="create-robot">
       <p class="heading">Create Robot</p>
-      <span>
+      <div>
         <label for="name">Name</label>
         <input type="text" id="name" class="name" placeholder="Robot name" />
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="select-type">Select type</label>
         <select name="select-type" id="select-type" class="select-type">
           <option value="basic">Basic Robot</option>
           <option value="small">Small Robot</option>
         </select>
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="color-picker">Select Color</label>
         <input
           type="color"
@@ -78,9 +78,9 @@
           class="color-picker"
           value="#e96126"
         />
-      </span>
-      <span>
-        <p>Select Options</p>
+      </div>
+      <div>
+        <label for="">Select Options</label>
         <label for="jump"
           ><input type="checkbox" id="jump" class="jump" />can jump</label
         >
@@ -90,8 +90,8 @@
         <label for="blink"
           ><input type="checkbox" id="blink" class="blink" />can blink</label
         >
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="comments">Write Comments</label>
         <textarea
           name="comments"
@@ -100,7 +100,7 @@
           rows="5"
           placeholder="Text area"
         ></textarea>
-      </span>
+      </div>
       <button>Create</button>
       <button>Show Created Robots</button>
       <hr>

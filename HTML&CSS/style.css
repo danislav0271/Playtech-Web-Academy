@@ -44,7 +44,7 @@ header h1, img{
     transform: rotate(135deg);
 }
 
-.factory-section .content-wrapper div{
+.factory-section .content-wrapper .robot-container, .content div{
     background-color: white;
     border: 1px solid black;
     margin-bottom: 10px;
@@ -76,7 +76,7 @@ header h1, img{
     float: left;
     margin-right: 20px;
 }
-.content-wrapper p{
+.content p{
     padding-left: 20px;
 }
 .create-robot{
@@ -97,13 +97,13 @@ header h1, img{
     padding: 5px 0px 5px 0px;
     border-bottom: 1px solid;
 }
-.create-robot span, button{
+.create-robot div, button{
     margin: 15px;
 }
-.create-robot span label{
+.create-robot div label{
     display: block;
 }
-.create-robot span p{
+.create-robot div p{
     margin: 0;
     margin-bottom: 7px;
 }
@@ -152,9 +152,9 @@ textarea#comments{
 }
 .robot-container p{
     position: absolute;
-    left: 47%;
+    left: 50%;
     bottom: 0%;
-    transform: translate(-47%, 0%);
+    transform: translate(-50%, 0%);
 }
 .head{
     width: 15%;
@@ -164,6 +164,7 @@ textarea#comments{
     top:7%;
     left: 50%;
     transform: translate(-50%, -7%);
+    border: 1px solid black;
 }
 .left-hand, .right-hand{
     width: 5%;
@@ -171,6 +172,7 @@ textarea#comments{
     border-radius: 4px;
     background-color: #EBEBEB !important;
     position: absolute;
+    border: 1px solid black;
 }
 .left-hand{
     top: 30%;
@@ -184,6 +186,7 @@ textarea#comments{
     width: 5%;
     height: 20%;
     position: absolute;
+    border: 1px solid black;
 }
 .left-leg{
     top: 63%;
@@ -194,7 +197,7 @@ textarea#comments{
     right: 42%;
 }
 .body{
-    width: 19%;
+    width: 20%;
     height: 35%;
     background-color: #E96126 !important;
     transform: perspective(10px) rotateX(-2deg);
@@ -217,11 +220,12 @@ div.right-eye{
     right: 16%;
 }
 div.mouth{
+    border: 1px solid black;
     width: 50%;
     height: 15%;
     border-radius: 50%;
     position: absolute;
-    bottom: 0;
+    bottom: 15%;
     left: 50%;
     transform: translate(-50%);
     animation-name: talk;

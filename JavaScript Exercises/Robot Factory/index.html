@@ -6,19 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robot Factory</title>
     <link rel="stylesheet" href="style.css" />
-    <script>
-      let robot1 = {name: "Robot1", color: "red", type: "Male", receivedMessages: []}
-      let robot2 = {name: "Robot2", color: "green", type: "Female", receivedMessages: []}
-      let robotPhrases = [ `Здравей, ${robot2.name}!`]
-    </script>
-    <script>
-      let phrases = ["Hello", "Hi", "What's up"];
-      let phrase = phrases[Math.floor(Math.random() * phrases.length)];
-
-      setTimeout(function(){
-        alert(`${phrase}!`);
-      }, 1000);
-    </script>
   </head>
   <body>
     <header>
@@ -61,7 +48,7 @@
             </p>
           </div>
           <div>
-            <img src="images/good-luck.jpg" alt="good luck" class="third" />
+            <img src="images/good-luck.jpg" alt="good luck" class="third"/>
             <p class="third">
               Paragraph text here. Text-align on left, 9% from right border.
               Image on left side.
@@ -72,18 +59,18 @@
     </section>
     <form action="#" class="create-robot">
       <p class="heading">Create Robot</p>
-      <span>
+      <div>
         <label for="name">Name</label>
         <input type="text" id="name" class="name" placeholder="Robot name" />
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="select-type">Select type</label>
         <select name="select-type" id="select-type" class="select-type">
           <option value="basic">Basic Robot</option>
           <option value="small">Small Robot</option>
         </select>
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="color-picker">Select Color</label>
         <input
           type="color"
@@ -91,9 +78,9 @@
           class="color-picker"
           value="#e96126"
         />
-      </span>
-      <span>
-        <p>Select Options</p>
+      </div>
+      <div>
+        <label for="">Select Options</label>
         <label for="jump"
           ><input type="checkbox" id="jump" class="jump" />can jump</label
         >
@@ -103,8 +90,8 @@
         <label for="blink"
           ><input type="checkbox" id="blink" class="blink" />can blink</label
         >
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="comments">Write Comments</label>
         <textarea
           name="comments"
@@ -113,10 +100,10 @@
           rows="5"
           placeholder="Text area"
         ></textarea>
-      </span>
+      </div>
       <button>Create</button>
       <button>Show Created Robots</button>
-      <hr />
+      <hr>
     </form>
   </body>
 </html>

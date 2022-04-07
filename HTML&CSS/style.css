@@ -102,8 +102,6 @@ header h1, img{
 }
 .create-robot div label{
     display: block;
-}
-.create-robot div p{
     margin: 0;
     margin-bottom: 7px;
 }

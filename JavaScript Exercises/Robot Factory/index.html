@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robot Factory</title>
     <link rel="stylesheet" href="style.css" />
+    <script>
+      let robot1 = {name: "Robot1", color: "red", type: "Male", receivedMessages: []}
+      let robot2 = {name: "Robot2", color: "green", type: "Female", receivedMessages: []}
+      let robotPhrases = [ `Здравей, ${robot2.name}!`]
+    </script>
+    <script>
+      let phrases = ["Hello", "Hi", "What's up"];
+      let phrase = phrases[Math.floor(Math.random() * phrases.length)];
+
+      setTimeout(function(){
+        alert(`${phrase}!`);
+      }, 1000);
+    </script>
   </head>
   <body>
     <header>
@@ -48,7 +61,7 @@
             </p>
           </div>
           <div>
-            <img src="images/good-luck.jpg" alt="good luck" class="third"/>
+            <img src="images/good-luck.jpg" alt="good luck" class="third" />
             <p class="third">
               Paragraph text here. Text-align on left, 9% from right border.
               Image on left side.
@@ -103,7 +116,7 @@
       </div>
       <button>Create</button>
       <button>Show Created Robots</button>
-      <hr>
+      <hr />
     </form>
   </body>
 </html>

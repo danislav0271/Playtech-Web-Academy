@@ -15,7 +15,7 @@
       /></a>
     </header>
     <section class="factory-section" id="slide-1">
-      <h1>Basic Robot</h1>
+      <h2>Basic Robot</h2>
       <div class="content-wrapper">
         <div class="robot-container">
           <div class="head">
@@ -59,18 +59,18 @@
     </section>
     <form action="#" class="create-robot">
       <p class="heading">Create Robot</p>
-      <div>
+      <div class="robot-name">
         <label for="name">Name</label>
         <input type="text" id="name" class="name" placeholder="Robot name" />
       </div>
-      <div>
+      <div class="type-selector">
         <label for="select-type">Select type</label>
         <select name="select-type" id="select-type" class="select-type">
           <option value="basic">Basic Robot</option>
           <option value="small">Small Robot</option>
         </select>
       </div>
-      <div>
+      <div class="color-pick">
         <label for="color-picker">Select Color</label>
         <input
           type="color"
@@ -79,7 +79,7 @@
           value="#e96126"
         />
       </div>
-      <div>
+      <div class="select-options">
         <label>Select Options</label>
         <label for="jump"
           ><input type="checkbox" id="jump" class="jump" />can jump</label
@@ -91,7 +91,7 @@
           ><input type="checkbox" id="blink" class="blink" />can blink</label
         >
       </div>
-      <div>
+      <div class="comment">
         <label for="comments">Write Comments</label>
         <textarea
           name="comments"

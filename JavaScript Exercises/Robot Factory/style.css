@@ -22,7 +22,7 @@ header h1, img{
     background-color: #FEFCE0;
     border: 1px solid black;
 }
-.factory-section h1{
+.factory-section h2{
     display: inline-block;
     margin-top: 0;
     padding-top: 10px;
@@ -31,7 +31,7 @@ header h1, img{
     border-bottom: 1px solid black;
     position: relative;
 }
-.factory-section h1::after{
+.factory-section h2::after{
     content: '';
     position: absolute;
     right: -16px;

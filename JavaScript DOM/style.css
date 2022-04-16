@@ -292,7 +292,7 @@ div.mouth{
     animation-delay: 1s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 @keyframes jump{
@@ -305,7 +305,7 @@ div.mouth{
     animation-delay: 1s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 @keyframes jump-head{
@@ -317,7 +317,7 @@ div.mouth{
     animation-delay: 1s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 @keyframes jump-female-body{
@@ -329,7 +329,7 @@ div.mouth{
     animation-delay: 1s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 @keyframes jump-male-body{
@@ -341,7 +341,7 @@ div.mouth{
     animation-delay: 1s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 @keyframes jump-hands{
@@ -353,7 +353,7 @@ div.mouth{
     animation-delay: 1s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
 @keyframes blink{

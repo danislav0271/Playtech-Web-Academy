@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robot Factory</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      let phrases = ["Hello", "Hi", "What's up"];
+      let phrase = phrases[Math.floor(Math.random() * phrases.length)];
+
+      setTimeout(function () {
+        alert(`${phrase}!`);
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>ROBOT FACTORY</h1>
+      <a href="https://www.playtech.com/" target="_blank"
+        ><img src="images/PTWebAcademy2022-03-15132008.JPG" alt="Playtech"
+      /></a>
+    </header>
+    <div class="slider">
+      <section class="factory-section fade" id="slide-1">
+        <h2>Basic Robot</h2>
+        <div class="content-wrapper">
+          <div class="robot-container">
+            <div class="head">
+              <div class="left-eye"></div>
+              <div class="right-eye"></div>
+              <div class="mouth"></div>
+            </div>
+            <div class="left-hand"></div>
+            <div class="right-hand"></div>
+            <div class="left-leg"></div>
+            <div class="right-leg"></div>
+            <div class="body"></div>
+            <p class="robot-name">Robot name</p>
+            <div class="bubble bubble-bottom-left"></div>
+          </div>
+
+          <div class="content">
+            <div>
+              <p class="first">
+                <b>P</b>aragraph text here. Text-align on left, 3% space from
+                right border. Text is only 2 lines and ends with three dots ...
+                because it too long. On hover full text is shown as tooltip.
+                First letter is bold.
+              </p>
+            </div>
+            <div>
+              <p class="second">
+                <i>Paragraph</i> text here. Text is justified, 6% space from
+                right border. Text is only 2 lines and ends with three dots ...
+                because it too long. On hover full text is shown. First word is
+                <i>italic</i>
+              </p>
+            </div>
+            <div>
+              <img src="images/good-luck.jpg" alt="good luck" class="third" />
+              <p class="third">
+                Paragraph text here. Text-align on left, 9% from right border.
+                Image on left side.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="buttons">
+        <button class="prev" onclick="previousSlide()">< Previous</button>
+        <button class="next" onclick="nextSlide()">Next ></button>
+      </div>
+    </div>
+    <form action="#" class="create-robot">
+      <p class="heading">Create Robot</p>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" class="name" placeholder="Robot name" />
+      </div>
+      <div>
+        <label for="select-type">Select type</label>
+        <select name="select-type" id="select-type" class="select-type">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div>
+        <label for="color-picker">Select Color</label>
+        <input
+          type="color"
+          id="color-picker"
+          class="color-picker"
+          value="#e96126"
+        />
+      </div>
+      <div>
+        <label>Select Options</label>
+        <label for="jump"
+          ><input type="checkbox" id="jump" class="jump" name="jump" />can
+          jump</label
+        >
+        <label for="talk"
+          ><input
+            onChange="onCheckboxChange()"
+            type="checkbox"
+            id="talk"
+            class="talk"
+            name="talk"
+          />can talk</label
+        >
+        <label for="blink"
+          ><input type="checkbox" id="blink" class="blink" name="blink" />can
+          blink</label
+        >
+      </div>
+      <div>
+        <label for="phrase">Phrase</label>
+        <textarea
+          name="phrase"
+          id="phrase"
+          cols="20"
+          rows="5"
+          placeholder="Phrase"
+        ></textarea>
+      </div>
+      <button type="submit" name="submit">Create</button>
+      <button>Show Created Robots</button>
+      <hr />
+    </form>
+    <script src="robot.js" type="text/javascript"></script>
+    <script src="slider.js" type="text/javascript"></script>
+  </body>
+</html>

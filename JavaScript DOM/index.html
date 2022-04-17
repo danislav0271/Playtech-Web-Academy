@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robot Factory</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script>
       let phrases = ["Hello", "Hi", "What's up"];
       let phrase = phrases[Math.floor(Math.random() * phrases.length)];
@@ -78,6 +78,7 @@
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" class="name" placeholder="Robot name" />
+        <div class="error-name">Please enter name</div>
       </div>
       <div>
         <label for="select-type">Select type</label>
@@ -85,6 +86,7 @@
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
+        <div class="error-type">Please enter type</div>
       </div>
       <div>
         <label for="color-picker">Select Color</label>
@@ -124,12 +126,13 @@
           rows="5"
           placeholder="Phrase"
         ></textarea>
+        <div class="error-phrase">Please enter phrase</div>
       </div>
       <button type="submit" name="submit">Create</button>
       <button>Show Created Robots</button>
       <hr />
     </form>
-    <script src="robot.js" type="text/javascript"></script>
-    <script src="slider.js" type="text/javascript"></script>
+    <script src="js/robot.js" type="text/javascript"></script>
+    <script src="js/slider.js" type="text/javascript"></script>
   </body>
 </html>

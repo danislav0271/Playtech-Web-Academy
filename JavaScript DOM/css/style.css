@@ -409,4 +409,27 @@ hr{
     to {
       opacity: 1;
     }
-  }
+}
+div.error-name, div.error-type{
+    margin: 0;
+    background: red;
+    max-width: 29vw;
+    padding: 5px;
+    z-index: 1;
+    bottom: 63px;
+    position: relative;
+    border-radius: 3px;
+    text-align: center;
+    display: none;
+}
+div.error-phrase{
+    margin: 0;
+    background: red;
+    padding: 5px;
+    z-index: 1;
+    top: -114px;
+    position: relative;
+    border-radius: 3px;
+    text-align: center;
+    display: none;
+}

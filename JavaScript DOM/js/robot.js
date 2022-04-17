@@ -6,6 +6,10 @@ const color = form.querySelector("input#color-picker");
 const canTalk = form.querySelector("input#talk");
 const canJump = form.querySelector("input#jump");
 const canBlink = form.querySelector("input#blink");
+const typeError = document.querySelector(".error-type");
+const nameError = document.querySelector(".error-name");
+const phraseError = document.querySelector(".error-phrase");
+
 
 robotPhrase.disabled = true;
 robotType.value = "";
@@ -20,6 +24,10 @@ function onCheckboxChange() {
 }
 
 function createRobot(event) {
+  typeError.style.display = "none";
+  nameError.style.display = "none";
+  phraseError.style.display = "none";
+
   if (robotName.value && robotType.value && color.value && (!canTalk.checked || canTalk.checked && robotPhrase.value)) { 
     const robot = {Name: robotName.value, Type: robotType.value, Color: color.value, Phrase: robotPhrase.value, jump: canJump.checked, talk: canTalk.checked, blink: canBlink.checked};
     robotList.push(robot);
@@ -36,6 +44,16 @@ function createRobot(event) {
     color.value = "#e96126";
   } else {
     alert("Form is not full.");
+    
+    if (!robotType.value) {
+      typeError.style.display = "block";
+    }
+    if (!robotName.value) {
+      nameError.style.display = "block";
+    }
+    if (canTalk.checked && !robotPhrase.value) {
+      phraseError.style.display = "block";
+    }
   }
   event.preventDefault();
 }

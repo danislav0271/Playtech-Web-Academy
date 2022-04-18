@@ -62,7 +62,8 @@ function createRobotSection(){
   const sections = document.querySelectorAll(".factory-section");
   const element = document.querySelector("#slide-1");
   const clone = element.cloneNode(true);
-  clone.id = `slide-${sections.length + 1}`;
+
+  clone.id = `slide-${sections.length+1}`;
 
   const newRobot = clone.querySelector(".robot-container");
   newRobot.classList.toggle(robotType.value === "Male" ? "male" : "female");

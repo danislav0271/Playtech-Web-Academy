@@ -1,6 +1,7 @@
 let currentSlide = 1;
 const prev = document.querySelector(".prev")
 const next = document.querySelector(".next")
+let seconds = 10000;
 
 function showSlide(slideIndex) {
   const slides = document.getElementsByClassName('slide');
@@ -19,7 +20,17 @@ function showSlide(slideIndex) {
     prev.disabled = false;
     next.disabled = false;
   }
+
+  clearInterval(interval);
+
+  interval = setInterval(function() {
+    nextSlide();
+  }, seconds);
 }
+
+let interval = setInterval(function() {
+  nextSlide();
+}, seconds);
 
 function nextSlide() {
   showSlide(currentSlide += 1);

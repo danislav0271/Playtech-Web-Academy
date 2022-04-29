@@ -23,6 +23,35 @@ function onCheckboxChange() {
   robotPhrase.disabled = !checkbox.checked;
 }
 
+robotName.addEventListener("focusout", errorName);
+function errorName(event) {
+  if (!robotName.value) {
+    nameError.style.display = "block";
+  }
+  else {
+    nameError.style.display = "none";
+  }
+};
+robotType.addEventListener("focusout", errorType);
+function errorType(event) {
+  if (!robotType.value) {
+    typeError.style.display = "block";
+  }
+  else {
+    typeError.style.display = "none";
+  }
+};
+robotPhrase.addEventListener("focusout", errorType);
+function errorType(event) {
+  if (canTalk.checked && !robotPhrase.value) {
+    phraseError.style.display = "block";
+  }
+  else {
+    phraseError.style.display = "none";
+  }
+};
+
+
 function createRobot(event) {
   typeError.style.display = "none";
   nameError.style.display = "none";

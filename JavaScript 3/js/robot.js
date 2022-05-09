@@ -132,10 +132,6 @@ function CreateMessage(sect) {
   const text = sect.querySelector("input");
   const name = sect.querySelector(".robot-name").textContent;
   const color = sect.querySelector(".body").style.backgroundColor;
-  const date = Date.now();
-
-  const message = {Name: name, Color: color, Text: text, Date: date};
-  messages.push(message);
 
   const messageDiv = document.createElement("div");
   messageDiv.className = "message";
@@ -173,6 +169,9 @@ function CreateMessage(sect) {
   messageDiv.appendChild(nameP);
   messageDiv.appendChild(dateP);
   messageDiv.appendChild(textP);
+
+  const message = {Name: name, Color: color, Text: text, Date: dateP.textContent};
+  messages.push(message);
 
   return messageDiv;
 

@@ -369,7 +369,7 @@ div.mouth{
     animation-iteration-count: infinite;
 }
 @keyframes jump-female-body{
-    to{top: 21%;}
+    to{top: 20.5%;}
 }
 .can-jump.male .body{
     animation-name: jump-male-body;
@@ -381,7 +381,7 @@ div.mouth{
     animation-iteration-count: infinite;
 }
 @keyframes jump-male-body{
-    to{top: 27%;}
+    to{top: 28%;}
 }
 .can-jump .left-hand, .can-jump .right-hand{
     animation-name: jump-hands;

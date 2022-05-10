@@ -24,7 +24,7 @@ function showSlide(slideIndex) {
 
   const messagesBox = document.querySelectorAll(".messages");
   messagesBox.forEach(m => {
-    m.scrollTop = m.scrollHeight;
+    m.scrollTop = -m.scrollHeight;
   })
 
   clearInterval(interval);

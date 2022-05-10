@@ -9,12 +9,14 @@ const canBlink = form.querySelector("input#blink");
 const typeError = document.querySelector(".error-type");
 const nameError = document.querySelector(".error-name");
 const phraseError = document.querySelector(".error-phrase");
+const audio = new Audio('sounds/chat-sound.mp3');
 
 
 robotPhrase.disabled = true;
 robotType.value = "";
 
 const robotList = [];
+let messages = [];
 
 function onCheckboxChange() {
   const checkbox = form.querySelector("input[name='talk']");
@@ -117,7 +119,7 @@ function createRobotSection() {
 
   GetSection(clone.id);
 
-  showSlide(currentSlide);
+  showSlide(currentSlide = sections.length);
 }
 
 function GetSection(id) {
@@ -126,54 +128,58 @@ function GetSection(id) {
   button.onclick = function() {ShowCreatedMessage(sect)};
 }
 
-let messages = [];
-
 function CreateMessage(sect) {
   const text = sect.querySelector("input");
   const name = sect.querySelector(".robot-name").textContent;
   const color = sect.querySelector(".body").style.backgroundColor;
 
-  const messageDiv = document.createElement("div");
-  messageDiv.className = "message";
+  if (text.value) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = "message";
+    
+    const nameP = document.createElement("p");
+    nameP.className = "name";
+    nameP.textContent = name;
+    nameP.style.color = color;
   
-  const nameP = document.createElement("p");
-  nameP.className = "name";
-  nameP.textContent = name;
-  nameP.style.color = color;
-
-  const dateP = document.createElement("p");
-  dateP.className = "date";
-  const hours = new Date().getHours();
-  const minutes = new Date().getMinutes();
-  const day = new Date().getDate();
-  const month = new Date().getMonth();
-  const year = new Date().getFullYear();
-  const fullDate = document.createElement("span");
-  fullDate.textContent = `${day}.${month}.${year}`;
-
-  if (minutes <= 9) {
-    dateP.textContent = `${hours}:0${minutes}`;
+    const dateP = document.createElement("p");
+    dateP.className = "date";
+    const hours = new Date().getHours();
+    const minutes = new Date().getMinutes();
+    const day = new Date().getDate();
+    const month = new Date().getMonth();
+    const year = new Date().getFullYear();
+    const fullDate = document.createElement("span");
+    fullDate.textContent = `${day}.${month}.${year}`;
+  
+    if (minutes <= 9) {
+      dateP.textContent = `${hours}:0${minutes}`;
+    }
+    else {
+      dateP.textContent = `${hours}:${minutes}`;
+    }
+  
+    dateP.append(fullDate);
+  
+    console.log(`${hours}:${minutes}`);
+  
+    const textP = document.createElement("p");
+    textP.className = "text";
+    textP.textContent = text.value;
+  
+    messageDiv.appendChild(nameP);
+    messageDiv.appendChild(dateP);
+    messageDiv.appendChild(textP);
+  
+    const message = {Name: name, Color: color, Text: text, Date: dateP.textContent};
+    messages.push(message);
+  
+    return messageDiv;
+  
   }
   else {
-    dateP.textContent = `${hours}:${minutes}`;
+    text.focus();
   }
-
-  dateP.append(fullDate);
-
-  console.log(`${hours}:${minutes}`);
-
-  const textP = document.createElement("p");
-  textP.className = "text";
-  textP.textContent = text.value;
-
-  messageDiv.appendChild(nameP);
-  messageDiv.appendChild(dateP);
-  messageDiv.appendChild(textP);
-
-  const message = {Name: name, Color: color, Text: text, Date: dateP.textContent};
-  messages.push(message);
-
-  return messageDiv;
 
 }
 
@@ -184,9 +190,15 @@ function ShowCreatedMessage(sect) {
     const section = document.querySelector(`#slide-${index}`);
     const messageBox = section.querySelector(".messages");
 
-    messageBox.append(CreateMessage(sect));
+    const message = CreateMessage(sect);
 
-    messageBox.scrollTop = messageBox.scrollHeight;
+    if (message) {
+      messageBox.prepend(message);
+
+      messageBox.scrollTop = -messageBox.scrollHeight;
+  
+      audio.play();
+    }
   }
 
   const text = sect.querySelector("input").value = "";
@@ -195,12 +207,24 @@ function ShowCreatedMessage(sect) {
 
 function ShowCreatedRobots(event) {
   const robotsFound = document.querySelector(".robots-found");
-  if (robotList.length <= 0) {
+  const container = document.querySelector(".robot-table");
+  const oldTables = container.querySelectorAll("table");
+
+  let newRobotList = robotList;
+  if (robotName.value) {
+    newRobotList = robotList.filter(robot => robot.Name == robotName.value);
+  }
+
+  if (newRobotList.length <= 0) {
     robotsFound.textContent = "No robots created yet";
+
+    if (oldTables.length >= 1) {
+      oldTables[0].remove(); 
+    }
+
   }
   else{
-    const container = document.querySelector(".robot-table");
-    const oldTables = container.querySelectorAll("table");
+
     if (oldTables.length >= 1) {
       oldTables[0].remove(); 
     }
@@ -225,10 +249,6 @@ function ShowCreatedRobots(event) {
 
     container.appendChild(robotTable); 
 
-    let newRobotList = robotList;
-    if (robotName.value) {
-      newRobotList = robotList.filter(robot => robot.Name == robotName.value);
-    }
 
     robotsFound.textContent = `${newRobotList.length} robots found`;
 

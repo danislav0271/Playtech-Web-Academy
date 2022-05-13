@@ -173,6 +173,7 @@ input.color-picker{
 input.jump, input.talk, input.blink{
     width: 16px;
     height: 16px;
+    vertical-align: middle;
 }
 form button{
     margin-right: 0;
@@ -220,18 +221,24 @@ textarea#phrase{
     background-color: #EBEBEB;
     position: absolute;
     border: 1px solid black;
-}
-.left-hand{
+    z-index: 1;
     top: 30%;
+}
+.male .left-hand{
     left: 32.5%;
 }
-.right-hand{
-    top: 30%;
+.male .right-hand{
     right: 32.5%;
+}
+.female .left-hand{
+    left: 35.5%;
+}
+.female .right-hand{
+    right: 35.5%;
 }
 .left-leg, .right-leg{
     width: 5%;
-    height: 20%;
+    height: 22%;
     position: absolute;
     border: 1px solid black;
 }

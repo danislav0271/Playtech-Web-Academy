@@ -89,37 +89,123 @@ function createRobot(event) {
 
 function createRobotSection() {
   const sections = document.querySelectorAll(".factory-section");
-  const element = document.querySelector("#slide-1");
-  const clone = element.cloneNode(true);
 
-  clone.id = `slide-${sections.length+1}`;
+  const section = document.createElement("div");
+  section.className = "factory-section";
+  section.classList.add("slide");
+  section.id = `slide-${sections.length+1}`;
 
-  const newRobot = clone.querySelector(".robot-container");
-  newRobot.classList.toggle(robotType.value === "Male" ? "male" : "female");
+  const header = document.createElement("h2");
+  header.textContent = `${robotType.value} Robot`;
+
+  const contentWrapper = document.createElement("div");
+  contentWrapper.className = "content-wrapper";
+
+  const robotContainer = document.createElement("div");
+  robotContainer.className = "robot-container";
+
+  robotContainer.classList.toggle(robotType.value === "Male" ? "male" : "female");
   if (canJump.checked == true) {
-    newRobot.classList.toggle("can-jump");
+    robotContainer.classList.toggle("can-jump");
   }
   if (canTalk.checked == true) {
-    newRobot.classList.toggle("can-talk");
+    robotContainer.classList.toggle("can-talk");
   }
   if (canBlink.checked == true) {
-    newRobot.classList.toggle("can-blink");
+    robotContainer.classList.toggle("can-blink");
   }
-  const newRobotName = newRobot.querySelector(".robot-name").innerHTML = robotName.value;
-  const newRobotColor = newRobot.querySelector(".body").style.backgroundColor = color.value;
-  const newText = clone.querySelector("h2").innerHTML = `${robotType.value} Robot`;
-  const newRobotPhrase = newRobot.querySelector(".bubble").innerHTML = robotPhrase.value;
 
-  clone.classList.add("slide");
+  const head = document.createElement("div");
+  head.className = "head";
+  const leftEye = document.createElement("div");
+  leftEye.className = "left-eye";
+  const rightEye = document.createElement("div");
+  rightEye.className = "right-eye";
+  const mouth = document.createElement("div");
+  mouth.className = "mouth";
+  head.appendChild(leftEye);
+  head.appendChild(rightEye);
+  head.appendChild(mouth);
 
-  element.before(clone);
+  const leftHand = document.createElement("div");
+  leftHand.className = "left-hand";
+  const rightHand = document.createElement("div");
+  rightHand.className = "right-hand";
+
+  const leftLeg = document.createElement("div");
+  leftLeg.className = "left-leg";
+  const rightLeg = document.createElement("div");
+  rightLeg.className = "right-leg";
+
+  const body = document.createElement("div");
+  body.className = "body";
+  body.style.backgroundColor = color.value;
+
+  const name = document.createElement("p");
+  name.className = "robot-name";
+  name.textContent = robotName.value;
+
+  const bubble = document.createElement("div");
+  bubble.classList.add("bubble");
+  bubble.classList.add("bubble-bottom-left");
+  bubble.textContent = robotPhrase.value;
+
+  robotContainer.appendChild(head);
+  robotContainer.appendChild(leftHand);
+  robotContainer.appendChild(rightHand);
+  robotContainer.appendChild(leftLeg);
+  robotContainer.appendChild(rightLeg);
+  robotContainer.appendChild(body);
+  robotContainer.appendChild(name);
+  robotContainer.appendChild(bubble);
+
+  const content = document.createElement("div");
+  content.className = "content";
+
+  const sendMessage = document.createElement("div");
+  sendMessage.className = "send-message";
+  const l = document.createElement("label");
+  l.textContent = "Send Message:";
+  const i = document.createElement("input");
+  i.type = "text";
+  i.placeholder = "write message here";
+  const b = document.createElement("button");
+  b.innerHTML = "Send";
+  sendMessage.appendChild(l);
+  sendMessage.appendChild(i);
+  sendMessage.appendChild(b);
+
+  const receivedMessages = document.createElement("div");
+  receivedMessages.className = "received-messages";
+  const h = document.createElement("div");
+  h.className = "header";
+  const p = document.createElement("p");
+  p.className = "header-last-message";
+  p.textContent = "Last messages";
+  h.appendChild(p);
+  const messages = document.createElement("div");
+  messages.className = "messages";
+  receivedMessages.appendChild(h);
+  receivedMessages.appendChild(messages);
+
+  content.appendChild(sendMessage);
+  content.appendChild(receivedMessages);
+
+  contentWrapper.appendChild(robotContainer);
+  contentWrapper.appendChild(content);
+
+  section.appendChild(header);
+  section.appendChild(contentWrapper);
 
   const buttons = document.querySelector(".buttons");
   buttons.style.display = "inline-block";
 
-  GetSection(clone.id);
+  buttons.before(section);
 
-  showSlide(currentSlide = sections.length);
+  GetSection(section.id);
+
+  showSlide(currentSlide = sections.length + 1);
+
 }
 
 function GetSection(id) {
@@ -186,7 +272,7 @@ function CreateMessage(sect) {
 function ShowCreatedMessage(sect) {
   let sections = document.querySelectorAll(".slide");
 
-  for (let index = 2; index < sections.length + 2; index++) {
+  for (let index = 1; index < sections.length + 1; index++) {
     const section = document.querySelector(`#slide-${index}`);
     const messageBox = section.querySelector(".messages");
 

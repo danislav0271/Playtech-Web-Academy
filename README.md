@@ -1,5 +1,4 @@
 # Playtech-Web-Academy
 Playtech Web Academy
 
-![robot1](https://user-images.githubusercontent.com/47814283/168874177-492b0a93-8c4c-4d8d-9e0e-c0d006229343.png)
-
+![robot1](https://user-images.githubusercontent.com/47814283/168874408-bd3eb307-58a7-430f-a5aa-333004c2776c.png)

@@ -121,7 +121,7 @@ function error() {
 };
 
 
-function createRobot(event: any) {
+function createRobot(event: Event) {
   typeError.style.display = "none";
   nameError.style.display = "none";
   phraseError.style.display = "none";
@@ -286,6 +286,8 @@ function createRobotSection(n:string, type:string, color:string, phrase:string, 
 function ClearRobots() {
   localStorage.clear();
 
+  robotList.splice(0, robotList.length);
+
   const sections = document.querySelectorAll(".factory-section") as NodeListOf<HTMLDivElement>;
   sections.forEach(section => {
     section.remove();
@@ -376,7 +378,7 @@ function ShowCreatedMessage(sect: HTMLDivElement) {
   text.value = "";
 }
 
-function ShowCreatedRobots(event: any) {
+function ShowCreatedRobots(event: Event) {
   const robotsFound = document.querySelector(".robots-found") as HTMLParagraphElement;
   const container = document.querySelector(".robot-table") as HTMLDivElement;
   const oldTables = container.querySelectorAll("table") as NodeListOf<HTMLTableElement>;

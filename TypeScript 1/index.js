@@ -220,6 +220,7 @@ function createRobotSection(n, type, color, phrase, jump, talk, blink) {
 }
 function ClearRobots() {
     localStorage.clear();
+    robotList.splice(0, robotList.length);
     const sections = document.querySelectorAll(".factory-section");
     sections.forEach(section => {
         section.remove();

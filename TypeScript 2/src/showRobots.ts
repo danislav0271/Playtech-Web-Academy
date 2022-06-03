@@ -1,9 +1,9 @@
-function ShowCreatedRobots(event: Event) {
+function ShowCreatedRobots(event: Event): void {
     const robotsFound = document.querySelector(".robots-found") as HTMLParagraphElement;
     const container = document.querySelector(".robot-table") as HTMLDivElement;
-    const oldTables = container.querySelectorAll("table") as NodeListOf<HTMLTableElement>;
+    const oldTables: NodeListOf<HTMLTableElement> = container.querySelectorAll("table");
   
-    let newRobotList = robotList;
+    let newRobotList: Robot[] = robotList;
     if (robotName.value) {
       newRobotList = robotList.filter(robot => robot.Name() === robotName.value);
     }
@@ -22,16 +22,16 @@ function ShowCreatedRobots(event: Event) {
         oldTables[0].remove(); 
       }
   
-      const robotTable = document.createElement("table");
+      const robotTable: HTMLTableElement = document.createElement("table");
   
-      const trHead = document.createElement("tr");
-      const thName = document.createElement("th");
+      const trHead: HTMLTableRowElement = document.createElement("tr");
+      const thName: HTMLTableCellElement = document.createElement("th");
       thName.textContent = "Name";
-      const thType = document.createElement("th");
+      const thType: HTMLTableCellElement = document.createElement("th");
       thType.textContent = "Type";
-      const thColor = document.createElement("th");
+      const thColor: HTMLTableCellElement = document.createElement("th");
       thColor.textContent = "Color";
-      const thOptions = document.createElement("th");
+      const thOptions: HTMLTableCellElement = document.createElement("th");
       thOptions.textContent = "Options";
   
       trHead.appendChild(thName);
@@ -46,27 +46,27 @@ function ShowCreatedRobots(event: Event) {
       robotsFound.textContent = `${newRobotList.length} robots found`;
   
       newRobotList.forEach(item => {
-        const tr = document.createElement("tr");
+        const tr: HTMLTableRowElement = document.createElement("tr");
   
-        const name = document.createElement("td");
-        const nameLink = document.createElement("a");
+        const name: HTMLTableCellElement = document.createElement("td");
+        const nameLink: HTMLAnchorElement = document.createElement("a");
         nameLink.textContent = item.Name();
-        let index = robotList.indexOf(item);
+        let index: number = robotList.indexOf(item);
         index++;
         nameLink.onclick = function(){ showSlide(index);};
         name.appendChild(nameLink);
   
-        const type = document.createElement("td");
+        const type: HTMLTableCellElement = document.createElement("td");
         type.textContent = item.Type();
   
-        const color = document.createElement("td");
-        const colorBlock = document.createElement("div");
+        const color: HTMLTableCellElement = document.createElement("td");
+        const colorBlock: HTMLDivElement = document.createElement("div");
         colorBlock.className = "color";
         colorBlock.style.background = `${item.Color()}`;
         color.appendChild(colorBlock);
   
-        const options = document.createElement("td");
-        const optionsText = [];
+        const options: HTMLTableCellElement = document.createElement("td");
+        const optionsText: string[] = [];
         if (item.Jump()) {
           optionsText.push("can jump");
         }

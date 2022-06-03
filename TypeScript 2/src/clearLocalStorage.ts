@@ -1,4 +1,4 @@
-function ClearRobots() {
+function ClearRobots(): void {
     localStorage.clear();
   
     robotList.splice(0, robotList.length);

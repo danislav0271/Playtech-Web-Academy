@@ -1,8 +1,8 @@
-const audio = new Audio('sounds/chat-sound.mp3');
+const audio: HTMLAudioElement = new Audio('sounds/chat-sound.mp3');
 
 let messages: Message[] = [];
 
-const messagesLocal = JSON.parse(localStorage.getItem(`messages`) as string);
+const messagesLocal: any = JSON.parse(<string>localStorage.getItem(`messages`));
 if (messagesLocal != null) {
   for (let i = 0; i < messagesLocal.length; i++) {
     const name: string = messagesLocal[i]._Name;
@@ -15,14 +15,17 @@ if (messagesLocal != null) {
   }
 }
 
-function ShowAllMessages(m: Message[]) {
-    let messages1 = document.querySelector(".messages") as HTMLDivElement;
-    if (messages1 != null) {
-        messages1.innerHTML = "";
-    }
+function ShowAllMessages(m: Message[]): void {
+    let messages1: NodeListOf<HTMLDivElement> = document.querySelectorAll(".messages");
+    messages1.forEach((m) => {
+      if (m != null) {
+        m.innerHTML = "";
+      }
+    })
+
     
     m.forEach((message) => {
-        let sections = document.querySelectorAll(".slide");
+        let sections: NodeListOf<HTMLDivElement> = document.querySelectorAll(".slide");
       
         for (let index = 1; index < sections.length + 1; index++) {
           const date: string[] = message.Date();
@@ -37,7 +40,7 @@ function ShowAllMessages(m: Message[]) {
           const section = document.querySelector(`#slide-${index}`) as HTMLDivElement;
           const messageBox = section.querySelector(".messages") as HTMLDivElement;
     
-          const newMessage = CreateMessage(message);
+          const newMessage: HTMLDivElement = CreateMessage(message);
       
           messageBox.prepend(newMessage);
       
@@ -46,7 +49,7 @@ function ShowAllMessages(m: Message[]) {
     })
 }
 
-window.onload = function() {
+window.onload = function(): void {
     ShowAllMessages(messages);
 }
 
@@ -55,24 +58,24 @@ function ShowLastMessages(event: Event) {
     event.preventDefault();
 }
 function ShowFirstMessages(event: Event) {
-    let reversedMessages: Message[] = messages.reverse();
-    ShowAllMessages(reversedMessages);
+    messages.reverse();
+    ShowAllMessages(messages);
     messages.reverse();
     event.preventDefault();
 }
 
 
-function CreateMessage(message: Message) {
+function CreateMessage(message: Message): HTMLDivElement {
 
-    const messageDiv = document.createElement("div");
+    const messageDiv: HTMLDivElement = document.createElement("div");
     messageDiv.className = "message";
       
-    const nameP = document.createElement("p");
+    const nameP: HTMLParagraphElement = document.createElement("p");
     nameP.className = "name";
     nameP.textContent = message.Name();
     nameP.style.color = message.Color();
     
-    const dateP = document.createElement("p");
+    const dateP: HTMLParagraphElement = document.createElement("p");
     dateP.className = "date";
     const date = document.createElement("span");
     date.textContent = message.Date()[1];
@@ -80,7 +83,7 @@ function CreateMessage(message: Message) {
     
     dateP.append(date);
     
-    const textP = document.createElement("p");
+    const textP: HTMLParagraphElement = document.createElement("p");
     textP.className = "text";
     textP.textContent = message.Text();
    
@@ -92,7 +95,7 @@ function CreateMessage(message: Message) {
   
   }
   
-  function ShowCreatedMessage(sect: HTMLDivElement) {
+  function ShowCreatedMessage(sect: HTMLDivElement): void {
     let sections = document.querySelectorAll(".slide");
     const name = sect.querySelector(".robot-name") as HTMLParagraphElement;
     const text = sect.querySelector("input") as HTMLInputElement;
@@ -115,7 +118,7 @@ function CreateMessage(message: Message) {
       const section = document.querySelector(`#slide-${index}`) as HTMLDivElement;
       const messageBox = section.querySelector(".messages") as HTMLDivElement;
   
-      const newMessage = CreateMessage(message);
+      const newMessage: HTMLDivElement = CreateMessage(message);
   
       if (newMessage && text.value) {
         messageBox.prepend(newMessage);

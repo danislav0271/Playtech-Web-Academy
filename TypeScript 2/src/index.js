@@ -36,7 +36,7 @@ for (let index = 0; index < localStorage.length; index++) {
 }
 function onCheckboxChange() {
     const checkbox = form.querySelector("input[name='talk']");
-    robotPhrase.disabled = !checkbox.checked;
+    robotPhrase.disabled = !(checkbox === null || checkbox === void 0 ? void 0 : checkbox.checked);
 }
 robotName.addEventListener("focusout", error);
 robotType.addEventListener("focusout", error);

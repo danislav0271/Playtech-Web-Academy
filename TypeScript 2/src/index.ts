@@ -43,16 +43,16 @@ for (let index = 0; index < localStorage.length; index++) {
 
 
 
-function onCheckboxChange() {
-  const checkbox = form.querySelector("input[name='talk']") as HTMLInputElement;
-  robotPhrase.disabled = !checkbox.checked;
+function onCheckboxChange(): void {
+  const checkbox = form.querySelector<HTMLInputElement>("input[name='talk']");
+  robotPhrase.disabled = !checkbox?.checked;
 }
 
 robotName.addEventListener("focusout", error);
 robotType.addEventListener("focusout", error);
 robotPhrase.addEventListener("focusout", error);
 
-function error() {
+function error(): void {
 
   nameError.style.display = !robotName.value ? "block" : "none";
   typeError.style.display = !robotType.value ? "block" : "none";
@@ -61,7 +61,7 @@ function error() {
 };
 
 
-function createRobot(event: Event) {
+function createRobot(event: Event): void {
   typeError.style.display = "none";
   nameError.style.display = "none";
   phraseError.style.display = "none";

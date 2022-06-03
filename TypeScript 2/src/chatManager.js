@@ -13,10 +13,12 @@ if (messagesLocal != null) {
     }
 }
 function ShowAllMessages(m) {
-    let messages1 = document.querySelector(".messages");
-    if (messages1 != null) {
-        messages1.innerHTML = "";
-    }
+    let messages1 = document.querySelectorAll(".messages");
+    messages1.forEach((m) => {
+        if (m != null) {
+            m.innerHTML = "";
+        }
+    });
     m.forEach((message) => {
         let sections = document.querySelectorAll(".slide");
         for (let index = 1; index < sections.length + 1; index++) {
@@ -44,8 +46,8 @@ function ShowLastMessages(event) {
     event.preventDefault();
 }
 function ShowFirstMessages(event) {
-    let reversedMessages = messages.reverse();
-    ShowAllMessages(reversedMessages);
+    messages.reverse();
+    ShowAllMessages(messages);
     messages.reverse();
     event.preventDefault();
 }

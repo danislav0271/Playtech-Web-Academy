@@ -44,7 +44,7 @@ function ShowCreatedRobots(event) {
             nameLink.onclick = function () { showSlide(index); };
             name.appendChild(nameLink);
             const type = document.createElement("td");
-            type.textContent = item.Type();
+            type.textContent = item.Type() === 0 ? "Male" : "Female";
             const color = document.createElement("td");
             const colorBlock = document.createElement("div");
             colorBlock.className = "color";

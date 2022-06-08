@@ -1,17 +1,18 @@
 "use strict";
 function createRobotSection(n, type, color, phrase, jump, talk, blink) {
     const sections = document.querySelectorAll(".factory-section");
+    const robotType = type === 0 ? "Male" : "Female";
     const section = document.createElement("div");
     section.className = "factory-section";
     section.classList.add("slide");
     section.id = `slide-${sections.length + 1}`;
     const header = document.createElement("h2");
-    header.textContent = `${type} Robot`;
+    header.textContent = `${robotType} Robot`;
     const contentWrapper = document.createElement("div");
     contentWrapper.className = "content-wrapper";
     const robotContainer = document.createElement("div");
     robotContainer.className = "robot-container";
-    robotContainer.classList.toggle(type === "Male" ? "male" : "female");
+    robotContainer.classList.toggle(robotType === "Male" ? "male" : "female");
     if (jump == true) {
         robotContainer.classList.toggle("can-jump");
     }

@@ -1,13 +1,15 @@
-function createRobotSection(n:string, type:string, color:string, phrase:string, jump:boolean, talk:boolean, blink:boolean): void {
+function createRobotSection(n:string, type:Type, color:string, phrase:string, jump:boolean, talk:boolean, blink:boolean): void {
     const sections = document.querySelectorAll(".factory-section") as NodeListOf<HTMLDivElement>;
   
+    const robotType = type === 0 ? "Male" : "Female"
+
     const section: HTMLDivElement = document.createElement("div");
     section.className = "factory-section";
     section.classList.add("slide");
     section.id = `slide-${sections.length+1}`;
   
     const header: HTMLHeadingElement = document.createElement("h2");
-    header.textContent = `${type} Robot`;
+    header.textContent = `${robotType} Robot`;
   
     const contentWrapper: HTMLDivElement = document.createElement("div");
     contentWrapper.className = "content-wrapper";
@@ -15,7 +17,7 @@ function createRobotSection(n:string, type:string, color:string, phrase:string, 
     const robotContainer: HTMLDivElement = document.createElement("div");
     robotContainer.className = "robot-container";
   
-    robotContainer.classList.toggle(type === "Male" ? "male" : "female");
+    robotContainer.classList.toggle(robotType === "Male" ? "male" : "female");
     if (jump == true) {
       robotContainer.classList.toggle("can-jump");
     }

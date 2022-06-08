@@ -57,7 +57,7 @@ function ShowCreatedRobots(event: Event): void {
         name.appendChild(nameLink);
   
         const type: HTMLTableCellElement = document.createElement("td");
-        type.textContent = item.Type();
+        type.textContent = item.Type() === 0 ? "Male" : "Female";
   
         const color: HTMLTableCellElement = document.createElement("td");
         const colorBlock: HTMLDivElement = document.createElement("div");

@@ -27,7 +27,7 @@ for (let index = 0; index < localStorage.length; index++) {
     continue;
   }
   const name: string = robot._Name;
-  const type: string = robot._Type;
+  const type: Type = robot._Type;
   const color: string = robot._Color;
   const phrase: string = robot._Phrase;
   const jump: boolean = robot._jump;
@@ -70,7 +70,7 @@ function createRobot(event: Event): void {
 
     let type: Type = robotType.value === "Male" ? Type.Male : Type.Female;
 
-    const robot = new Robot(robotName.value, robotType.value, color.value, robotPhrase.value, canJump.checked, canTalk.checked, canBlink.checked);
+    const robot = new Robot(robotName.value, type, color.value, robotPhrase.value, canJump.checked, canTalk.checked, canBlink.checked);
     robotList.push(robot);
     console.log(robot)
     localStorage.setItem(`slide-${robotList.length}`, JSON.stringify(robot));

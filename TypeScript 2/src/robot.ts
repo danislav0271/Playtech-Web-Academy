@@ -1,13 +1,13 @@
 class Robot {
     private _Name: string;
-    private _Type: string;
+    private _Type: Type;
     private _Color: string
     private _Phrase: string;
     private _jump: boolean;
     private _talk: boolean;
     private _blink: boolean;
 
-    constructor(name: string, type: string, color: string, phrase: string, jump:boolean, talk: boolean, blink: boolean) {
+    constructor(name: string, type: Type, color: string, phrase: string, jump:boolean, talk: boolean, blink: boolean) {
         this._Name=name;
         this._Type=type;
         this._Color=color;

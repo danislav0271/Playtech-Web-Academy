@@ -12,7 +12,15 @@ const nameError = document.querySelector(".error-name");
 const phraseError = document.querySelector(".error-phrase");
 robotPhrase.disabled = true;
 robotType.value = "";
+robotName.addEventListener("focusout", error);
+robotType.addEventListener("focusout", error);
+robotPhrase.addEventListener("focusout", error);
 let robotList = [];
+const chatManager = new ChatManager([]);
+chatManager.GetLocalStorageMessages();
+window.onload = () => {
+    chatManager.ShowAllMessages(chatManager.Messages);
+};
 var Type;
 (function (Type) {
     Type[Type["Male"] = 0] = "Male";
@@ -32,15 +40,12 @@ for (let index = 0; index < localStorage.length; index++) {
     const blink = robot._blink;
     const oldRobot = new Robot(name, type, color, phrase, jump, talk, blink);
     robotList.push(oldRobot);
-    createRobotSection(name, type, color, phrase, jump, talk, blink);
+    createRobotSection(oldRobot);
 }
 function onCheckboxChange() {
     const checkbox = form.querySelector("input[name='talk']");
     robotPhrase.disabled = !(checkbox === null || checkbox === void 0 ? void 0 : checkbox.checked);
 }
-robotName.addEventListener("focusout", error);
-robotType.addEventListener("focusout", error);
-robotPhrase.addEventListener("focusout", error);
 function error() {
     nameError.style.display = !robotName.value ? "block" : "none";
     typeError.style.display = !robotType.value ? "block" : "none";
@@ -55,9 +60,8 @@ function createRobot(event) {
         let type = robotType.value === "Male" ? Type.Male : Type.Female;
         const robot = new Robot(robotName.value, type, color.value, robotPhrase.value, canJump.checked, canTalk.checked, canBlink.checked);
         robotList.push(robot);
-        console.log(robot);
         localStorage.setItem(`slide-${robotList.length}`, JSON.stringify(robot));
-        createRobotSection(robot.Name(), robot.Type(), robot.Color(), robot.Phrase(), robot.Jump(), robot.Talk(), robot.Blink());
+        createRobotSection(robot);
         robotName.value = "";
         robotType.value = "";
         robotPhrase.value = "";

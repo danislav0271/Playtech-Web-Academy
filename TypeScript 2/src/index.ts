@@ -9,10 +9,21 @@ const canBlink = document.querySelector("input#blink") as HTMLInputElement;
 const typeError = document.querySelector(".error-type") as HTMLDivElement;
 const nameError = document.querySelector(".error-name") as HTMLDivElement;
 const phraseError = document.querySelector(".error-phrase") as HTMLDivElement;
+
 robotPhrase.disabled = true;
 robotType.value = "";
 
+robotName.addEventListener("focusout", error);
+robotType.addEventListener("focusout", error);
+robotPhrase.addEventListener("focusout", error);
+
 let robotList: Robot[] = [];
+
+const chatManager = new ChatManager([]);
+chatManager.GetLocalStorageMessages();
+window.onload = () => {
+  chatManager.ShowAllMessages(chatManager.Messages);
+}
 
 
 enum Type {
@@ -35,10 +46,10 @@ for (let index = 0; index < localStorage.length; index++) {
   const blink: boolean = robot._blink;
 
   const oldRobot = new Robot(name, type, color, phrase, jump, talk, blink);
-
+  
   robotList.push(oldRobot);
 
-  createRobotSection(name, type, color, phrase, jump, talk, blink);
+  createRobotSection(oldRobot);
 }
 
 
@@ -48,9 +59,6 @@ function onCheckboxChange(): void {
   robotPhrase.disabled = !checkbox?.checked;
 }
 
-robotName.addEventListener("focusout", error);
-robotType.addEventListener("focusout", error);
-robotPhrase.addEventListener("focusout", error);
 
 function error(): void {
 
@@ -72,10 +80,10 @@ function createRobot(event: Event): void {
 
     const robot = new Robot(robotName.value, type, color.value, robotPhrase.value, canJump.checked, canTalk.checked, canBlink.checked);
     robotList.push(robot);
-    console.log(robot)
+
     localStorage.setItem(`slide-${robotList.length}`, JSON.stringify(robot));
 
-    createRobotSection(robot.Name(), robot.Type(), robot.Color(), robot.Phrase(), robot.Jump(), robot.Talk(), robot.Blink());
+    createRobotSection(robot);
 
     robotName.value = "";
     robotType.value = "";

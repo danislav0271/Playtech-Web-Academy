@@ -6,24 +6,28 @@ class Message {
         this._Text = text;
         this._Date = date;
     }
-    Name() {
-        get: {
-            return this._Name;
-        }
+    get Name() {
+        return this._Name;
     }
-    Color() {
-        get: {
-            return this._Color;
-        }
+    set Name(name) {
+        this._Name = name;
     }
-    Text() {
-        get: {
-            return this._Text;
-        }
+    get Color() {
+        return this._Color;
     }
-    Date() {
-        get: {
-            return this._Date;
-        }
+    set Color(color) {
+        this._Color = color;
+    }
+    get Text() {
+        return this._Text;
+    }
+    set Text(text) {
+        this._Text = text;
+    }
+    get Date() {
+        return this._Date;
+    }
+    set Date(date) {
+        this._Date = date;
     }
 }

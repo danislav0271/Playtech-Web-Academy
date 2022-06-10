@@ -5,7 +5,7 @@ function ShowCreatedRobots(event: Event): void {
   
     let newRobotList: Robot[] = robotList;
     if (robotName.value) {
-      newRobotList = robotList.filter(robot => robot.Name() === robotName.value);
+      newRobotList = robotList.filter(robot => robot.Name === robotName.value);
     }
   
     if (newRobotList.length <= 0) {
@@ -50,30 +50,30 @@ function ShowCreatedRobots(event: Event): void {
   
         const name: HTMLTableCellElement = document.createElement("td");
         const nameLink: HTMLAnchorElement = document.createElement("a");
-        nameLink.textContent = item.Name();
+        nameLink.textContent = item.Name;
         let index: number = robotList.indexOf(item);
         index++;
         nameLink.onclick = function(){ showSlide(index);};
         name.appendChild(nameLink);
   
         const type: HTMLTableCellElement = document.createElement("td");
-        type.textContent = item.Type() === 0 ? "Male" : "Female";
+        type.textContent = item.Type === 0 ? "Male" : "Female";
   
         const color: HTMLTableCellElement = document.createElement("td");
         const colorBlock: HTMLDivElement = document.createElement("div");
         colorBlock.className = "color";
-        colorBlock.style.background = `${item.Color()}`;
+        colorBlock.style.background = `${item.Color}`;
         color.appendChild(colorBlock);
   
         const options: HTMLTableCellElement = document.createElement("td");
         const optionsText: string[] = [];
-        if (item.Jump()) {
+        if (item.Jump) {
           optionsText.push("can jump");
         }
-        if (item.Talk()) {
+        if (item.Talk) {
           optionsText.push("can talk");
         }
-        if (item.Blink()) {
+        if (item.Blink) {
           optionsText.push("can blink");
         }
         options.textContent = optionsText.join(", ");

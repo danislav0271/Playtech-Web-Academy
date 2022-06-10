@@ -17,26 +17,52 @@ class Robot {
         this._blink=blink;
     }
 
-    Name() {
-        get: { return this._Name}
+    get Name() {
+        return this._Name;
     }
-    Type() {
-        get: { return this._Type}
-    }
-    Color() {
-        get: { return this._Color}
-    }
-    Phrase() {
-        get: { return this._Phrase}
-    }
-    Jump() {
-        get: { return this._jump}
-    }
-    Talk() {
-        get: { return this._talk}
-    }
-    Blink() {
-        get: { return this._blink}
+    set Name(name: string) {
+        this._Name = name;
     }
 
+    get Type() {
+        return this._Type;
+    }
+    set Type(type: Type) {
+        this._Type = type;
+    }
+
+    get Color() {
+        return this._Color;
+    }
+    set Color(color: string) {
+        this._Color = color;
+    }
+
+    get Phrase() {
+        return this._Phrase;
+    }
+    set Phrase(phrase: string) {
+        this._Phrase = phrase;
+    }
+
+    get Jump() {
+        return this._jump;
+    }
+    set Jump(jump: boolean) {
+        this._jump = jump;
+    }
+
+    get Talk() {
+        return this._talk;
+    }
+    set Talk(talk: boolean) {
+        this._talk = talk;
+    }
+
+    get Blink() {
+    return this._blink;
+    }
+    set Blink(blink: boolean) {
+        this._blink = blink;
+    }
 }

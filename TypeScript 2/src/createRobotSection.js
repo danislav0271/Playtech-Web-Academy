@@ -1,7 +1,7 @@
 "use strict";
-function createRobotSection(n, type, color, phrase, jump, talk, blink) {
+function createRobotSection(robot) {
     const sections = document.querySelectorAll(".factory-section");
-    const robotType = type === 0 ? "Male" : "Female";
+    const robotType = robot.Type === 0 ? "Male" : "Female";
     const section = document.createElement("div");
     section.className = "factory-section";
     section.classList.add("slide");
@@ -13,13 +13,13 @@ function createRobotSection(n, type, color, phrase, jump, talk, blink) {
     const robotContainer = document.createElement("div");
     robotContainer.className = "robot-container";
     robotContainer.classList.toggle(robotType === "Male" ? "male" : "female");
-    if (jump == true) {
+    if (robot.Jump == true) {
         robotContainer.classList.toggle("can-jump");
     }
-    if (talk == true) {
+    if (robot.Talk == true) {
         robotContainer.classList.toggle("can-talk");
     }
-    if (blink == true) {
+    if (robot.Blink == true) {
         robotContainer.classList.toggle("can-blink");
     }
     const head = document.createElement("div");
@@ -43,14 +43,14 @@ function createRobotSection(n, type, color, phrase, jump, talk, blink) {
     rightLeg.className = "right-leg";
     const body = document.createElement("div");
     body.className = "body";
-    body.style.backgroundColor = color;
+    body.style.backgroundColor = robot.Color;
     const name = document.createElement("p");
     name.className = "robot-name";
-    name.textContent = n;
+    name.textContent = robot.Name;
     const bubble = document.createElement("div");
     bubble.classList.add("bubble");
     bubble.classList.add("bubble-bottom-left");
-    bubble.textContent = phrase;
+    bubble.textContent = robot.Phrase;
     robotContainer.appendChild(head);
     robotContainer.appendChild(leftHand);
     robotContainer.appendChild(rightHand);
@@ -87,10 +87,14 @@ function createRobotSection(n, type, color, phrase, jump, talk, blink) {
     receivedMessages.appendChild(divMessages);
     const b1 = document.createElement("button");
     b1.innerHTML = "Show Last Messages";
-    b1.addEventListener("click", ShowLastMessages);
+    b1.addEventListener("click", () => {
+        chatManager.ShowLastMessages();
+    }, false);
     const b2 = document.createElement("button");
     b2.innerHTML = "Show First Messages";
-    b2.addEventListener("click", ShowFirstMessages);
+    b2.addEventListener("click", () => {
+        chatManager.ShowFirstMessages();
+    }, false);
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "message-buttons";
     buttonContainer.appendChild(b1);
@@ -107,10 +111,10 @@ function createRobotSection(n, type, color, phrase, jump, talk, blink) {
     buttons.before(section);
     GetSection(section.id);
     showSlide(currentSlide = sections.length + 1);
-    ShowAllMessages(messages);
+    chatManager.ShowAllMessages(chatManager.Messages);
 }
 function GetSection(id) {
     const sect = document.querySelector(`#${id}`);
     const button = sect.querySelector("button");
-    button.onclick = function () { ShowCreatedMessage(sect); };
+    button.onclick = function () { chatManager.ShowCreatedMessage(sect); };
 }

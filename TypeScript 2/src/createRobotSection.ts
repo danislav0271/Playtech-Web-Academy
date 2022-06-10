@@ -1,7 +1,7 @@
-function createRobotSection(n:string, type:Type, color:string, phrase:string, jump:boolean, talk:boolean, blink:boolean): void {
+function createRobotSection(robot: Robot): void {
     const sections = document.querySelectorAll(".factory-section") as NodeListOf<HTMLDivElement>;
   
-    const robotType = type === 0 ? "Male" : "Female"
+    const robotType = robot.Type === 0 ? "Male" : "Female"
 
     const section: HTMLDivElement = document.createElement("div");
     section.className = "factory-section";
@@ -18,13 +18,13 @@ function createRobotSection(n:string, type:Type, color:string, phrase:string, ju
     robotContainer.className = "robot-container";
   
     robotContainer.classList.toggle(robotType === "Male" ? "male" : "female");
-    if (jump == true) {
+    if (robot.Jump == true) {
       robotContainer.classList.toggle("can-jump");
     }
-    if (talk== true) {
+    if (robot.Talk == true) {
       robotContainer.classList.toggle("can-talk");
     }
-    if (blink == true) {
+    if (robot.Blink == true) {
       robotContainer.classList.toggle("can-blink");
     }
   
@@ -52,16 +52,16 @@ function createRobotSection(n:string, type:Type, color:string, phrase:string, ju
   
     const body: HTMLDivElement = document.createElement("div");
     body.className = "body";
-    body.style.backgroundColor = color;
+    body.style.backgroundColor = robot.Color;
   
     const name: HTMLDivElement = document.createElement("p");
     name.className = "robot-name";
-    name.textContent = n;
+    name.textContent = robot.Name;
   
     const bubble: HTMLDivElement = document.createElement("div");
     bubble.classList.add("bubble");
     bubble.classList.add("bubble-bottom-left");
-    bubble.textContent = phrase;
+    bubble.textContent = robot.Phrase;
   
     robotContainer.appendChild(head);
     robotContainer.appendChild(leftHand);
@@ -103,11 +103,15 @@ function createRobotSection(n:string, type:Type, color:string, phrase:string, ju
 
     const b1: HTMLButtonElement = document.createElement("button");
     b1.innerHTML = "Show Last Messages";
-    b1.addEventListener("click", ShowLastMessages);
+    b1.addEventListener("click", () => {
+      chatManager.ShowLastMessages()
+    }, false);
 
     const b2: HTMLButtonElement = document.createElement("button");
     b2.innerHTML = "Show First Messages";
-    b2.addEventListener("click", ShowFirstMessages);
+    b2.addEventListener("click", () => {
+      chatManager.ShowFirstMessages();
+    }, false);
 
     const buttonContainer: HTMLDivElement = document.createElement("div");
     buttonContainer.className = "message-buttons";
@@ -134,7 +138,7 @@ function createRobotSection(n:string, type:Type, color:string, phrase:string, ju
   
     showSlide(currentSlide = sections.length + 1);
 
-    ShowAllMessages(messages);
+    chatManager.ShowAllMessages(chatManager.Messages);
   
   }
   
@@ -143,7 +147,7 @@ function createRobotSection(n:string, type:Type, color:string, phrase:string, ju
   function GetSection(id: string): void {
     const sect = document.querySelector(`#${id}`) as HTMLDivElement;
     const button = sect.querySelector("button") as HTMLButtonElement;
-    button.onclick = function() {ShowCreatedMessage(sect)};
+    button.onclick = function() {chatManager.ShowCreatedMessage(sect)};
   }
   
   

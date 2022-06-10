@@ -5,7 +5,7 @@ function ShowCreatedRobots(event) {
     const oldTables = container.querySelectorAll("table");
     let newRobotList = robotList;
     if (robotName.value) {
-        newRobotList = robotList.filter(robot => robot.Name() === robotName.value);
+        newRobotList = robotList.filter(robot => robot.Name === robotName.value);
     }
     if (newRobotList.length <= 0) {
         robotsFound.textContent = "No robots created yet";
@@ -38,27 +38,27 @@ function ShowCreatedRobots(event) {
             const tr = document.createElement("tr");
             const name = document.createElement("td");
             const nameLink = document.createElement("a");
-            nameLink.textContent = item.Name();
+            nameLink.textContent = item.Name;
             let index = robotList.indexOf(item);
             index++;
             nameLink.onclick = function () { showSlide(index); };
             name.appendChild(nameLink);
             const type = document.createElement("td");
-            type.textContent = item.Type() === 0 ? "Male" : "Female";
+            type.textContent = item.Type === 0 ? "Male" : "Female";
             const color = document.createElement("td");
             const colorBlock = document.createElement("div");
             colorBlock.className = "color";
-            colorBlock.style.background = `${item.Color()}`;
+            colorBlock.style.background = `${item.Color}`;
             color.appendChild(colorBlock);
             const options = document.createElement("td");
             const optionsText = [];
-            if (item.Jump()) {
+            if (item.Jump) {
                 optionsText.push("can jump");
             }
-            if (item.Talk()) {
+            if (item.Talk) {
                 optionsText.push("can talk");
             }
-            if (item.Blink()) {
+            if (item.Blink) {
                 optionsText.push("can blink");
             }
             options.textContent = optionsText.join(", ");

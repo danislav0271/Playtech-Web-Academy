@@ -11,16 +11,31 @@ class Message {
         this._Date=date;
     }
     
-    Name() {
-        get: { return this._Name}
+    get Name() {
+        return this._Name;
     }
-    Color() {
-        get: { return this._Color}
+    set Name(name: string | null) {
+        this._Name = name;
     }
-    Text() {
-        get: { return this._Text}
+
+    get Color() {
+        return this._Color;
     }
-    Date() {
-        get: { return this._Date}
+    set Color(color: string) {
+        this._Color = color;
+    }
+
+    get Text() {
+        return this._Text;
+    }
+    set Text(text: string) {
+        this._Text = text;
+    }
+
+    get Date() {
+        return this._Date;
+    }
+    set Date(date: string[]) {
+        this._Date = date;
     }
 }
